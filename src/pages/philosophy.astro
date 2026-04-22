@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getCollection, render } from "astro:content"
+
+const entries = await getCollection("philosophy")
+const entry = entries[0]!
+const { Content } = await render(entry)
+---
+
+<Layout title="Investment Philosophy | WisWealthy" description="Our fiduciary-first investment philosophy: wisdom before wealth, always.">
+
+  <!-- Hero -->
+  <section class="glow-hero py-32 px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <div class="badge-pill mb-8">Our Philosophy</div>
+      <h1 class="font-heading font-bold text-ivory leading-[1.08] tracking-[-0.03em]"
+          style="font-size: clamp(2.25rem, 6vw, 4rem);">
+        {entry.data.headline}
+      </h1>
+    </div>
+  </section>
+
+  <!-- Advisory approach -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="border-l-2 border-gold pl-7 py-1">
+        <p class="font-heading text-ivory/80 text-xl leading-relaxed tracking-tight italic">
+          {entry.data.advisoryApproach}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core principles -->
+  <section class="bg-navy border-y border-white/6 py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="badge-pill mb-10 mx-auto w-fit">Core Principles</div>
+      <article class="space-y-0
+        [&_h2]:font-heading [&_h2]:font-bold [&_h2]:text-ivory [&_h2]:text-xl [&_h2]:tracking-tight
+        [&_h2]:mt-0 [&_h2]:mb-2 [&_h2]:pt-8 [&_h2]:border-t [&_h2]:border-white/6 [&_h2:first-of-type]:border-0 [&_h2:first-of-type]:pt-0
+        [&_p]:text-ivory/50 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:mb-0">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <!-- Attribution -->
+  <section class="py-16 px-6 text-center bg-background">
+    <p class="font-heading text-gold font-bold text-sm tracking-widest uppercase">WisWealthy &middot; Est. 2024</p>
+    <p class="text-ivory/30 text-xs mt-1">Formerly AlphaBet Wealth</p>
+    <a href="/contact"
+       class="inline-block mt-6 border border-white/15 text-ivory/60 px-6 py-2.5 rounded-full text-sm hover:border-gold/40 hover:text-gold transition-colors">
+      Discuss Our Approach
+    </a>
+  </section>
+
+</Layout>

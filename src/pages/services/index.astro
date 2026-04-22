@@ -1,0 +1,50 @@
+---
+import Layout from "@/layouts/main.astro"
+import ServiceCard from "@/components/ServiceCard.astro"
+import { getCollection } from "astro:content"
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order)
+---
+
+<Layout title="Portfolio Solutions | WisWealthy" description="WisWealthy's six portfolio advisory solutions for sophisticated investors.">
+
+  <!-- Hero -->
+  <section class="glow-hero py-28 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="badge-pill mb-8">What We Offer</div>
+      <h1 class="font-heading font-bold text-ivory leading-tight tracking-tight mb-4"
+          style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        Portfolio Solutions
+      </h1>
+      <p class="text-ivory/50 text-[15px] leading-relaxed max-w-lg mx-auto">
+        Six carefully considered areas of advisory, each chosen to serve the full spectrum of a sophisticated investor's portfolio.
+      </p>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {services.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            description={service.data.description}
+            icon={service.data.icon}
+            slug={service.id.replace(/\.mdx?$/, "")}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 text-center border-t border-white/6 bg-navy">
+    <p class="text-ivory/40 text-sm mb-6">Not sure which solution fits your goals? Let's find out together.</p>
+    <a href="/contact"
+       class="inline-block bg-gold text-navy font-semibold px-8 py-3.5 rounded-full hover:bg-gold/90 transition-colors text-sm">
+      Book a Discovery Call
+    </a>
+  </section>
+
+</Layout>

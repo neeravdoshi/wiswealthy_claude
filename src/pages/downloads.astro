@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getCollection } from "astro:content"
+
+const docs = await getCollection("downloads")
+
+type DownloadEntry = typeof docs[number]
+const grouped = docs.reduce<Record<string, DownloadEntry[]>>((acc, doc) => {
+  const cat = doc.data.category
+  if (!acc[cat]) acc[cat] = []
+  acc[cat].push(doc)
+  return acc
+}, {})
+---
+
+<Layout title="Downloads | WisWealthy" description="Download WisWealthy factsheets, guides, and client onboarding documents.">
+
+  <!-- Hero -->
+  <section class="glow-hero py-28 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="badge-pill mb-8">Resources</div>
+      <h1 class="font-heading font-bold text-ivory leading-tight tracking-tight mb-4"
+          style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        Downloads
+      </h1>
+      <p class="text-ivory/50 text-[15px] leading-relaxed">
+        Factsheets, guides, and documents to help you understand our process and get started.
+      </p>
+    </div>
+  </section>
+
+  <!-- Documents -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-5xl mx-auto space-y-14">
+      {Object.entries(grouped).map(([category, items]) => (
+        <div>
+          <h2 class="font-heading font-bold text-ivory/80 text-sm tracking-widest uppercase mb-6 pb-3 border-b border-white/8">
+            {category}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {items.map(doc => (
+              <div class="flex flex-col justify-between gap-5 rounded-2xl border border-white/8 bg-charcoal p-7 hover:border-gold/25 transition-colors">
+                <div>
+                  <span class="badge-pill mb-4 inline-block">{doc.data.category}</span>
+                  <h3 class="font-heading font-bold text-ivory text-base leading-snug mb-2 tracking-tight">
+                    {doc.data.documentName}
+                  </h3>
+                  <p class="text-ivory/45 text-sm leading-relaxed">
+                    {doc.data.description}
+                  </p>
+                </div>
+                <a
+                  href={doc.data.filePath}
+                  download
+                  class="inline-flex items-center gap-2 bg-gold/10 border border-gold/25 text-gold text-sm font-medium px-5 py-2.5 rounded-full hover:bg-gold hover:text-navy transition-colors self-start"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>
+                  </svg>
+                  Download PDF
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
