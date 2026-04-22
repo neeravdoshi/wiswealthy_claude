@@ -1,0 +1,58 @@
+---
+import Layout from "@/layouts/main.astro"
+import { getCollection, render } from "astro:content"
+
+const entries = await getCollection("journey")
+const entry = entries[0]!
+const { Content } = await render(entry)
+---
+
+<Layout title="About WisWealthy | Our Journey" description="Learn about WisWealthy's history and our fiduciary-first approach to portfolio advisory.">
+
+  <!-- Hero -->
+  <section class="glow-hero py-28 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="badge-pill mb-8">The Journey</div>
+      <h1 class="font-heading font-bold text-ivory leading-tight tracking-tight mb-4"
+          style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        {entry.data.title}
+      </h1>
+      <p class="text-ivory/50 text-base">{entry.data.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <article class="prose max-w-none
+        [&_p]:text-ivory/60 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:mb-4">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-navy border-y border-white/6 py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="badge-pill mb-10 mx-auto w-fit">Key Milestones</div>
+      <ol class="space-y-8">
+        {entry.data.milestones.map(m => (
+          <li class="flex gap-6 items-start p-7 rounded-2xl border border-white/8 bg-charcoal hover:border-gold/25 transition-colors">
+            <span class="font-heading font-bold text-gold text-2xl tracking-tight shrink-0 w-16">{m.year}</span>
+            <p class="text-ivory/60 text-[15px] leading-relaxed pt-1">{m.event}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 text-center bg-background">
+    <p class="text-ivory/45 text-sm mb-6">The next chapter of your journey starts with a conversation.</p>
+    <a href="/contact"
+       class="inline-block bg-gold text-navy font-semibold px-8 py-3.5 rounded-full hover:bg-gold/90 transition-colors text-sm">
+      Book a Discovery Call
+    </a>
+  </section>
+
+</Layout>

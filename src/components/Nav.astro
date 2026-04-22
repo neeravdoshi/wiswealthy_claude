@@ -1,0 +1,78 @@
+---
+const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Portfolio Solutions", href: "/services" },
+  { label: "Philosophy", href: "/philosophy" },
+  { label: "Downloads", href: "/downloads" },
+]
+const currentPath = Astro.url.pathname
+---
+
+<nav class="fixed top-0 inset-x-0 z-50 border-b border-white/8 bg-navy/80 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex flex-col leading-none group">
+        <span class="text-gold font-heading font-bold text-lg tracking-tight">WisWealthy</span>
+        <span class="text-ivory/40 text-[10px] tracking-widest uppercase">Wealth Through Wisdom</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm font-medium transition-colors",
+              currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+                ? "text-gold"
+                : "text-ivory/60 hover:text-ivory"
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="bg-gold text-navy text-sm font-semibold px-5 py-2 rounded-full hover:bg-gold/90 transition-colors"
+        >
+          Book a Call
+        </a>
+      </div>
+
+      <button
+        id="nav-toggle"
+        class="md:hidden text-ivory/70 p-2 hover:text-gold transition-colors"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="nav-mobile" class="hidden md:hidden border-t border-white/8 bg-navy px-6 pb-5 pt-3">
+    {navLinks.map(link => (
+      <a href={link.href} class="block py-2.5 text-ivory/60 hover:text-gold text-sm font-medium border-b border-white/5 last:border-0 transition-colors">
+        {link.label}
+      </a>
+    ))}
+    <a href="/contact" class="block mt-4 bg-gold text-navy text-sm font-semibold px-5 py-2.5 rounded-full text-center hover:bg-gold/90 transition-colors">
+      Book a Call
+    </a>
+  </div>
+</nav>
+
+<div class="h-16"></div>
+
+<script>
+  const toggle = document.getElementById("nav-toggle")
+  const menu = document.getElementById("nav-mobile")
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden")
+    menu?.classList.toggle("hidden", !isHidden)
+    toggle.setAttribute("aria-expanded", isHidden ? "true" : "false")
+  })
+</script>

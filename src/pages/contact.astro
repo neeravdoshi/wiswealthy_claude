@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/main.astro"
+---
+
+<Layout title="Contact WisWealthy | Book a Discovery Call" description="Schedule a discovery call or send a written inquiry to WisWealthy.">
+
+  <!-- Hero -->
+  <section class="glow-hero py-28 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="badge-pill mb-8">Get in Touch</div>
+      <h1 class="font-heading font-bold text-ivory leading-tight tracking-tight mb-4"
+          style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        Let's Talk
+      </h1>
+      <p class="text-ivory/50 text-[15px] leading-relaxed max-w-md mx-auto">
+        Every advisory relationship begins with a conversation. Tell us where you are, and we'll help you think through where you want to go.
+      </p>
+    </div>
+  </section>
+
+  <!-- Embeds -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+
+      <!-- Cal.com -->
+      <div class="lg:col-span-3">
+        <h2 class="font-heading font-bold text-ivory text-xl tracking-tight mb-1">Book a Discovery Call</h2>
+        <p class="text-ivory/40 text-sm mb-6">30 minutes, no obligations. We'll understand your goals and share how we work.</p>
+        <div class="rounded-2xl border border-white/8 bg-charcoal p-10 text-center min-h-[380px] flex flex-col items-center justify-center gap-5">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="oklch(0.72 0.12 75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-heading font-bold text-ivory text-base mb-1">Cal.com Scheduling</p>
+            <p class="text-ivory/35 text-sm mb-5 max-w-xs mx-auto">The calendar embed will appear here once your Cal.com account is connected.</p>
+            <a href="https://cal.com" target="_blank" rel="noopener noreferrer"
+               class="inline-block bg-gold text-navy text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gold/90 transition-colors">
+              Book via cal.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tally -->
+      <div class="lg:col-span-2">
+        <h2 class="font-heading font-bold text-ivory text-xl tracking-tight mb-1">Send a Written Inquiry</h2>
+        <p class="text-ivory/40 text-sm mb-6">Prefer to write? We'll respond within one business day.</p>
+        <div class="rounded-2xl border border-white/8 bg-charcoal p-8 text-center min-h-[280px] flex flex-col items-center justify-center gap-5">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="oklch(0.72 0.12 75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-heading font-bold text-ivory text-base mb-1">Tally Form</p>
+            <p class="text-ivory/35 text-sm mb-5 max-w-xs mx-auto">The form will appear here once your Tally account is connected.</p>
+            <a href="https://tally.so" target="_blank" rel="noopener noreferrer"
+               class="inline-block border border-white/15 text-ivory/60 text-sm font-medium px-6 py-2.5 rounded-full hover:border-gold/40 hover:text-gold transition-colors">
+              Visit tally.so
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

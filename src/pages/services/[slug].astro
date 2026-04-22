@@ -1,0 +1,103 @@
+---
+import Layout from "@/layouts/main.astro"
+import { DynamicIcon } from "@/components/DynamicIcon"
+import { getCollection, render } from "astro:content"
+
+export async function getStaticPaths() {
+  const services = await getCollection("services")
+  return services.map(entry => ({
+    params: { slug: entry.id.replace(/\.mdx?$/, "") },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<Layout
+  title={`${entry.data.title} | WisWealthy Portfolio Solutions`}
+  description={entry.data.description}
+>
+  <!-- Breadcrumb -->
+  <div class="bg-background border-b border-white/6 px-6 py-3">
+    <div class="max-w-6xl mx-auto">
+      <nav class="text-xs text-ivory/35 flex items-center gap-2">
+        <a href="/services" class="hover:text-gold transition-colors">Portfolio Solutions</a>
+        <span>/</span>
+        <span class="text-ivory/60">{entry.data.title}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="glow-hero py-24 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mx-auto mb-6">
+        <DynamicIcon client:load name={entry.data.icon} size={24} className="text-gold" />
+      </div>
+      <h1 class="font-heading font-bold text-ivory leading-tight tracking-tight mb-4"
+          style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        {entry.data.title}
+      </h1>
+      <p class="text-ivory/50 text-[15px] leading-relaxed max-w-xl mx-auto">
+        {entry.data.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="bg-background border-t border-white/6 py-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
+      <!-- Prose -->
+      <div class="lg:col-span-3">
+        <article class="prose max-w-none
+          [&_p]:text-ivory/55 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:mb-4">
+          <Content />
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-2 space-y-4">
+        <div class="rounded-2xl border border-white/8 bg-charcoal p-7">
+          <h2 class="font-heading font-bold text-ivory text-base tracking-tight mb-5">Key Features</h2>
+          <ul class="space-y-3.5">
+            {entry.data.keyFeatures.map(feature => (
+              <li class="flex items-start gap-3">
+                <span class="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-gold/15 border border-gold/25 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="oklch(0.72 0.12 75)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+                <span class="text-[13px] text-ivory/55 leading-relaxed">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-gold/15 bg-gold/5 p-7 text-center">
+          <p class="text-ivory/50 text-sm leading-relaxed mb-5">
+            Interested in this solution? Let's discuss how it fits your portfolio.
+          </p>
+          <a href="/contact"
+             class="block bg-gold text-navy font-semibold px-6 py-3 rounded-full hover:bg-gold/90 transition-colors text-sm">
+            Discuss This Solution
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Back -->
+    <div class="max-w-5xl mx-auto mt-12 pt-8 border-t border-white/6">
+      <a href="/services"
+         class="inline-flex items-center gap-2 text-ivory/35 text-sm hover:text-gold transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+        </svg>
+        Back to all solutions
+      </a>
+    </div>
+  </section>
+
+</Layout>
