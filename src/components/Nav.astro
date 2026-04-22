@@ -34,7 +34,7 @@ const currentPath = Astro.url.pathname
           href="/contact"
           class="bg-gold text-navy text-sm font-semibold px-5 py-2 rounded-full hover:bg-gold/90 transition-colors"
         >
-          Book a Call
+          Book a Discovery Call
         </a>
       </div>
 
@@ -44,10 +44,13 @@ const currentPath = Astro.url.pathname
         aria-label="Open navigation menu"
         aria-expanded="false"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg data-icon-open xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" x2="20" y1="6" y2="6"></line>
           <line x1="4" x2="20" y1="12" y2="12"></line>
           <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg data-icon-close class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
         </svg>
       </button>
     </div>
@@ -70,9 +73,14 @@ const currentPath = Astro.url.pathname
 <script>
   const toggle = document.getElementById("nav-toggle")
   const menu = document.getElementById("nav-mobile")
+  const iconOpen = toggle?.querySelector("[data-icon-open]")
+  const iconClose = toggle?.querySelector("[data-icon-close]")
   toggle?.addEventListener("click", () => {
     const isHidden = menu?.classList.contains("hidden")
     menu?.classList.toggle("hidden", !isHidden)
     toggle.setAttribute("aria-expanded", isHidden ? "true" : "false")
+    toggle.setAttribute("aria-label", isHidden ? "Close navigation menu" : "Open navigation menu")
+    iconOpen?.classList.toggle("hidden", !isHidden)
+    iconClose?.classList.toggle("hidden", isHidden)
   })
 </script>
