@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname
               "text-sm font-medium transition-colors",
               currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
                 ? "text-gold"
-                : "text-ivory/60 hover:text-ivory"
+                : "text-ivory/70 hover:text-ivory"
             ]}
           >
             {link.label}
@@ -55,7 +55,7 @@ const currentPath = Astro.url.pathname
 
   <div id="nav-mobile" class="hidden md:hidden border-t border-white/8 bg-navy px-6 pb-5 pt-3">
     {navLinks.map(link => (
-      <a href={link.href} class="block py-2.5 text-ivory/60 hover:text-gold text-sm font-medium border-b border-white/5 last:border-0 transition-colors">
+      <a href={link.href} class="block py-2.5 text-ivory/70 hover:text-gold text-sm font-medium border-b border-white/5 last:border-0 transition-colors">
         {link.label}
       </a>
     ))}

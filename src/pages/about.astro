@@ -17,7 +17,7 @@ const { Content } = await render(entry)
           style="font-size: clamp(2rem, 5vw, 3.5rem);">
         {entry.data.title}
       </h1>
-      <p class="text-ivory/50 text-base">{entry.data.subtitle}</p>
+      <p class="text-ivory/65 text-base">{entry.data.subtitle}</p>
     </div>
   </section>
 
@@ -25,7 +25,7 @@ const { Content } = await render(entry)
   <section class="bg-background border-t border-white/6 py-20 px-6">
     <div class="max-w-2xl mx-auto">
       <article class="prose max-w-none
-        [&_p]:text-ivory/60 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:mb-4">
+        [&_p]:text-ivory/70 [&_p]:text-base [&_p]:leading-relaxed [&_p]:mb-4">
         <Content />
       </article>
     </div>
@@ -39,7 +39,7 @@ const { Content } = await render(entry)
         {entry.data.milestones.map(m => (
           <li class="flex gap-6 items-start p-7 rounded-2xl border border-white/8 bg-charcoal hover:border-gold/25 transition-colors">
             <span class="font-heading font-bold text-gold text-2xl tracking-tight shrink-0 w-16">{m.year}</span>
-            <p class="text-ivory/60 text-[15px] leading-relaxed pt-1">{m.event}</p>
+            <p class="text-ivory/70 text-base leading-relaxed pt-1">{m.event}</p>
           </li>
         ))}
       </ol>
@@ -48,7 +48,7 @@ const { Content } = await render(entry)
 
   <!-- CTA -->
   <section class="py-20 px-6 text-center bg-background">
-    <p class="text-ivory/45 text-sm mb-6">The next chapter of your journey starts with a conversation.</p>
+    <p class="text-ivory/60 text-base mb-6">The next chapter of your journey starts with a conversation.</p>
     <a href="/contact"
        class="inline-block bg-gold text-navy font-semibold px-8 py-3.5 rounded-full hover:bg-gold/90 transition-colors text-sm">
       Book a Discovery Call

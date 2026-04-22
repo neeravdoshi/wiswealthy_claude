@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/syne";
-@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/noto-serif";
+@import "@fontsource-variable/noto-sans";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -77,8 +77,8 @@
 }
 
 @theme inline {
-    --font-sans: 'DM Sans Variable', sans-serif;
-    --font-heading: 'Syne Variable', sans-serif;
+    --font-sans: 'Noto Sans Variable', sans-serif;
+    --font-heading: 'Noto Serif Variable', serif;
     --color-navy: oklch(0.14 0.04 240);
     --color-charcoal: oklch(0.22 0.04 235);
     --color-ivory: oklch(0.96 0.01 80);
@@ -134,8 +134,8 @@
     @apply font-sans;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne Variable', sans-serif;
-    letter-spacing: -0.025em;
+    font-family: 'Noto Serif Variable', serif;
+    letter-spacing: -0.015em;
   }
 }
 

@@ -40,7 +40,7 @@ const { Content } = await render(entry)
           style="font-size: clamp(2rem, 5vw, 3.5rem);">
         {entry.data.title}
       </h1>
-      <p class="text-ivory/50 text-[15px] leading-relaxed max-w-xl mx-auto">
+      <p class="text-ivory/70 text-base leading-relaxed max-w-xl mx-auto">
         {entry.data.description}
       </p>
     </div>
@@ -53,7 +53,7 @@ const { Content } = await render(entry)
       <!-- Prose -->
       <div class="lg:col-span-3">
         <article class="prose max-w-none
-          [&_p]:text-ivory/55 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:mb-4">
+          [&_p]:text-ivory/70 [&_p]:text-base [&_p]:leading-relaxed [&_p]:mb-4">
           <Content />
         </article>
       </div>
@@ -70,14 +70,14 @@ const { Content } = await render(entry)
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </span>
-                <span class="text-[13px] text-ivory/55 leading-relaxed">{feature}</span>
+                <span class="text-sm text-ivory/65 leading-relaxed">{feature}</span>
               </li>
             ))}
           </ul>
         </div>
 
         <div class="rounded-2xl border border-gold/15 bg-gold/5 p-7 text-center">
-          <p class="text-ivory/50 text-sm leading-relaxed mb-5">
+          <p class="text-ivory/65 text-sm leading-relaxed mb-5">
             Interested in this solution? Let's discuss how it fits your portfolio.
           </p>
           <a href="/contact"
