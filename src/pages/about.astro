@@ -34,12 +34,12 @@ const { Content } = await render(entry)
   <!-- Timeline -->
   <section class="bg-navy border-y border-white/6 py-20 px-6">
     <div class="max-w-2xl mx-auto">
-      <div class="badge-pill mb-10 mx-auto w-fit">Key Milestones</div>
+      <h2 class="font-heading font-bold text-ivory text-base tracking-tight mb-10">Key Milestones</h2>
       <ol class="space-y-8">
         {entry.data.milestones.map(m => (
-          <li class="flex gap-6 items-start p-7 rounded-2xl border border-white/8 bg-charcoal hover:border-gold/25 transition-colors">
-            <span class="font-heading font-bold text-gold text-2xl tracking-tight shrink-0 w-16">{m.year}</span>
-            <p class="text-ivory/70 text-base leading-relaxed pt-1">{m.event}</p>
+          <li class="flex gap-8 items-baseline py-6 border-b border-white/8 last:border-0">
+            <span class="font-heading font-bold text-gold text-sm tracking-widest shrink-0 w-12 uppercase">{m.year}</span>
+            <p class="text-ivory/70 text-base leading-relaxed">{m.event}</p>
           </li>
         ))}
       </ol>
